@@ -61,6 +61,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
+_G.mega = mega or {
+  colors = {},
+  icons = {},
+}
+
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -68,6 +73,14 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
+  {
+    'sainnhe/everforest',
+    priority = 1000,
+    config = function()
+      vim.g.everforest_background = 'soft'
+      vim.cmd.colorscheme 'everforest'
+    end,
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',
